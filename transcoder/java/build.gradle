@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	implementation "org.projectlombok:lombok:1.18.34"
+	implementation "com.google.guava:guava:16.0.1"
 
 	implementation "com.github.kokorin.jaffree:jaffree:2023.09.10"
 
