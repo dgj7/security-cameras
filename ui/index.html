@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>SECURITY FEED</title>
+        <title>SECURITY CAMERA FEED</title>
     </head>
 
     <body style="background-color: #000000;">
@@ -8,7 +8,7 @@
             <tr>
                 <td width="50%">
                     <video width="100%" height="auto" controls autoplay muted loop *ngIf="event?.video">
-                        <source src="http://localhost:8401/api/transcoder/ffmpeg/live" type="video/mp4">
+                        <source src="http://localhost:8401/api/transcoder/java/ffmpeg/development-camera/live.mp4" type="video/mp4">
                         BROWSER DOESN'T SUPPORT EMBEDDED VIDEOS.
                     </video>
                 </td>
