@@ -1,7 +1,7 @@
 {
   "cameras": [
     {
-      "id": "1",
+      "id": "test-camera",
       "ipAddress": "192.168.1.100",
       "port": "554",
       "username": "username",
