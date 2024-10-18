@@ -2,10 +2,12 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.0-M3'
 	id 'io.spring.dependency-management' version '1.1.6'
+
+	id "io.freefair.lombok" version "8.10.2"
 }
 
 group = 'com.dg.securitycams.transcoder'
-version = '0.0.1'
+version = '0.0.3'
 
 java {
 	toolchain {
@@ -21,6 +23,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation "org.projectlombok:lombok:1.18.34"
 
 	implementation "com.github.kokorin.jaffree:jaffree:2023.09.10"
 

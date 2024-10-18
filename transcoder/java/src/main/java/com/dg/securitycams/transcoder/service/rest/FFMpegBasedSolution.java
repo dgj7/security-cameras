@@ -1,8 +1,9 @@
-package com.dg.securitycams.transcoder.rest;
+package com.dg.securitycams.transcoder.service.rest;
 
 import com.github.kokorin.jaffree.StreamType;
 import com.github.kokorin.jaffree.ffmpeg.FFmpeg;
 import com.github.kokorin.jaffree.ffmpeg.PipeOutput;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +12,11 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 
 import java.util.concurrent.TimeUnit;
 
+import static com.dg.securitycams.transcoder.Constants.FFMPEG_URI;
+
+@Slf4j
 @RestController
-@RequestMapping("/api/transcoder/ffmpeg")
+@RequestMapping(FFMPEG_URI)
 public class FFMpegBasedSolution {
     @Value("${application.username}")
     private String username;
@@ -22,6 +26,10 @@ public class FFMpegBasedSolution {
     private String address;
     @Value("${source.port}")
     private String port;
+
+    public FFMpegBasedSolution() {
+        log.info("initialized: " + FFMPEG_URI);
+    }
 
     @GetMapping(value="/live")
     @ResponseBody
