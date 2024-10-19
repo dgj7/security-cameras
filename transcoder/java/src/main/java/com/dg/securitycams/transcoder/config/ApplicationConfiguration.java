@@ -1,7 +1,7 @@
 package com.dg.securitycams.transcoder.config;
 
-import com.dg.securitycams.pattern.transform.Transformer;
-import com.dg.securitycams.pattern.transform.impl.CameraToUrlTransformer;
+import com.dg.securitycams.transcoder.pattern.transform.Transformer;
+import com.dg.securitycams.transcoder.pattern.transform.impl.CameraToUrlTransformer;
 import com.dg.securitycams.transcoder.model.camconfig.Camera;
 import com.dg.securitycams.transcoder.model.camconfig.Cameras;
 import com.fasterxml.jackson.databind.ObjectMapper;

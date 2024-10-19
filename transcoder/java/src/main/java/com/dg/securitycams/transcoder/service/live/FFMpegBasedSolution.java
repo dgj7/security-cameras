@@ -1,6 +1,6 @@
-package com.dg.securitycams.transcoder.service.rest;
+package com.dg.securitycams.transcoder.service.live;
 
-import com.dg.securitycams.pattern.transform.Transformer;
+import com.dg.securitycams.transcoder.pattern.transform.Transformer;
 import com.dg.securitycams.transcoder.model.camconfig.Camera;
 import com.github.kokorin.jaffree.StreamType;
 import com.github.kokorin.jaffree.ffmpeg.FFmpeg;
