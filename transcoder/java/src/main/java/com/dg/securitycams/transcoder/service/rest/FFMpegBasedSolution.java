@@ -1,5 +1,6 @@
 package com.dg.securitycams.transcoder.service.rest;
 
+import com.dg.securitycams.pattern.transform.Transformer;
 import com.dg.securitycams.transcoder.model.camconfig.Camera;
 import com.github.kokorin.jaffree.StreamType;
 import com.github.kokorin.jaffree.ffmpeg.FFmpeg;
@@ -23,9 +24,11 @@ import static com.dg.securitycams.transcoder.Constants.FFMPEG_URI;
 @RequestMapping(FFMPEG_URI)
 public class FFMpegBasedSolution {
     private final Map<String, Camera> cameraMap;
+    private final Transformer<Camera, String> urlGen;
 
-    public FFMpegBasedSolution(final Map<String, Camera> cameras) {
+    public FFMpegBasedSolution(final Map<String, Camera> cameras, final Transformer<Camera, String> urlGenerator) {
         this.cameraMap = Objects.requireNonNull(cameras, "Map<String, Camera> is null");
+        this.urlGen = Objects.requireNonNull(urlGenerator, "Transformer<Camera, String> is null");
         log.info("initialized: " + FFMPEG_URI);
     }
 
@@ -35,22 +38,11 @@ public class FFMpegBasedSolution {
         /* get the associated camera */
         final Camera camera = cameraMap.get(id);
         if (camera == null) {
-            // todo: should this be 404? that's http; maybe we want a specific exception type?
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "can't find camera with id [" + id + "]");
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "can't find camera with id [" + id + "]");
         }
 
         /* build the url based on the camera configuration */
-        final String url = new StringBuffer()
-                .append("rtsp://")
-                .append(camera.getUsername())
-                .append(":")
-                .append(camera.getPassword())
-                .append("@")
-                .append(camera.getIpAddress())
-                .append(":")
-                .append(camera.getPort())
-                .append("/ISAPI/Streaming/channels/101/live")
-                .toString();
+        final String url = urlGen.transform(camera);
 
         /* call ffmpeg to generate stream */
         return ResponseEntity.ok()

@@ -1,5 +1,7 @@
 package com.dg.securitycams.transcoder.config;
 
+import com.dg.securitycams.pattern.transform.Transformer;
+import com.dg.securitycams.pattern.transform.impl.CameraToUrlTransformer;
 import com.dg.securitycams.transcoder.model.camconfig.Camera;
 import com.dg.securitycams.transcoder.model.camconfig.Cameras;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,6 +25,14 @@ import static com.dg.securitycams.transcoder.Constants.CAMERAS_CONFIG_PATH;
 @Slf4j
 @Configuration
 public class ApplicationConfiguration {
+    /**
+     * Generate urls.
+     */
+    @Bean
+    public Transformer<Camera, String> urlGenerator() {
+        return new CameraToUrlTransformer();
+    }
+
     /**
      * Load all configured cameras from {@code /src/main/resources/cameras.json}.
      */
