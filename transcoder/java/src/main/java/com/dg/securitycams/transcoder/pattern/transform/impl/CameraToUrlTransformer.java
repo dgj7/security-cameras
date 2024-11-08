@@ -1,7 +1,7 @@
 package com.dg.securitycams.transcoder.pattern.transform.impl;
 
 import com.dg.securitycams.transcoder.pattern.transform.Transformer;
-import com.dg.securitycams.transcoder.model.camconfig.Camera;
+import com.dg.securitycams.transcoder.model.config.cam.Camera;
 
 public class CameraToUrlTransformer implements Transformer<Camera, String> {
     @Override

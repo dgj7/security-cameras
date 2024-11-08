@@ -1,4 +1,4 @@
-package com.dg.securitycams.transcoder.config.log;
+package com.dg.securitycams.transcoder.service.any;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.function.TriConsumer;

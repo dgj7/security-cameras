@@ -1,10 +1,10 @@
 package com.dg.securitycams.transcoder.config;
 
-import com.dg.securitycams.transcoder.config.log.CallLogger;
+import com.dg.securitycams.transcoder.service.any.CallLogger;
 import com.dg.securitycams.transcoder.pattern.transform.Transformer;
 import com.dg.securitycams.transcoder.pattern.transform.impl.CameraToUrlTransformer;
-import com.dg.securitycams.transcoder.model.camconfig.Camera;
-import com.dg.securitycams.transcoder.model.camconfig.Cameras;
+import com.dg.securitycams.transcoder.model.config.cam.Camera;
+import com.dg.securitycams.transcoder.model.config.cam.Cameras;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Resources;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +50,7 @@ public class ApplicationConfiguration {
         final Map<String, Camera> map = new HashMap<>();
         cameras.getCameras().forEach(cam -> {
             if (map.containsKey(cam.getId())) {
+                // todo: custom exception type here
                 throw new RuntimeException("duplicate camera id: " + cam.getId());
             }
             map.put(cam.getId(), cam);

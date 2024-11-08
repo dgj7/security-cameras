@@ -1,6 +1,6 @@
 package com.dg.securitycams.transcoder.service.info;
 
-import com.dg.securitycams.transcoder.model.camconfig.Camera;
+import com.dg.securitycams.transcoder.model.config.cam.Camera;
 import com.google.common.collect.ImmutableList;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +21,16 @@ import static com.dg.securitycams.transcoder.Constants.INFO_LIST_URI;
 @RestController
 @RequestMapping(INFO_LIST_URI)
 public class CameraEnumeratorController {
+    private static final String URI_CAMERAS = "/cameras";
+
     private final Map<String, Camera> cameraMap;
 
     public CameraEnumeratorController(final Map<String, Camera> cameras) {
         this.cameraMap = Objects.requireNonNull(cameras, "Map<String, Camera> is null");
-        log.info("initialized: " + INFO_LIST_URI);
+        log.info("initialized: " + INFO_LIST_URI + URI_CAMERAS);
     }
 
-    @GetMapping(value="/cameras")
+    @GetMapping(value=URI_CAMERAS)
     @ResponseBody
     public List<String> listCameras() {
         return ImmutableList.<String>builder()

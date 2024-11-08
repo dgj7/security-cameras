@@ -1,4 +1,4 @@
-package com.dg.securitycams.transcoder.model.camconfig;
+package com.dg.securitycams.transcoder.model.config.cam;
 
 import lombok.Getter;
 import lombok.Setter;
