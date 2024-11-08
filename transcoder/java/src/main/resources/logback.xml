@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5 seconds">
+
+    <!-- profiles for deployed and local apps -->
+    <springProfile name="dev | test | prod">
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    </springProfile>
+    <springProfile name="local">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <!-- http://logback.qos.ch/manual/layouts.html -->
+                <pattern>[%blue(%d{yyyy-MM-dd HH:mm:ss})] [%yellow(%-5level)] [%green(%-70.70logger)] - %msg%n</pattern>
+            </encoder>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+    <!-- make logback stop logging itself -->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+
+    <!-- silence loud spring things -->
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework.security" level="INFO"/>
+
+    <!-- silence loud apache things -->
+    <logger name="org.apache" level="INFO"/>
+</configuration>
