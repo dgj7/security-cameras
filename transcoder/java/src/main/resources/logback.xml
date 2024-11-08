@@ -23,10 +23,22 @@
     <!-- silence loud spring things -->
     <logger name="org.springframework" level="INFO"/>
     <logger name="org.springframework.security" level="INFO"/>
+    <logger name="org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext" level="WARN"/>
+    <logger name="org.springframework.boot.web.embedded.tomcat.TomcatWebServer" level="WARN"/>
+    <logger name="org.springdoc.api.AbstractOpenApiResource" level="WARN"/>
+    <logger name="org.springframework.web.servlet.DispatcherServlet" level="WARN"/>
 
     <!-- silence loud apache things -->
     <logger name="org.apache" level="INFO"/>
+    <logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN"/>
+    <logger name="org.apache.catalina.core.StandardService" level="WARN"/>
+    <logger name="org.apache.catalina.core.StandardEngine" level="WARN"/>
+    <logger name="org.apache.catalina.core.ContainerBase" level="WARN"/>
+    <logger name="org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver" level="WARN"/>
 
     <!-- DEBUG: display an informative message for any service that gets called -->
-    <logger name="com.dg.securitycams.transcoder.config.log.CallLogger" level="DEBUG"/>
+    <logger name="com.dg.securitycams.transcoder.service.any.CallLogger" level="DEBUG"/>
+
+    <!-- INFO: prints additional startup info -->
+    <logger name="com.dg.securitycams.transcoder.SpringApplication" level="WARN"/>
 </configuration>

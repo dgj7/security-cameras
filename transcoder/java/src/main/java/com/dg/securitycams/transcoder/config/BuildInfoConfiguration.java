@@ -28,6 +28,8 @@ public class BuildInfoConfiguration {
     private String commitIdAbbrev;
     @Value("${spring.profiles.active:unknown}")
     private String activeSpringProfilesCsv;
+    @Value("${server.port}")
+    private String serverPort;
 
     @Autowired
     public BuildInfoConfiguration(final BuildProperties pBuildProperties) {
@@ -66,6 +68,6 @@ public class BuildInfoConfiguration {
 
     @Bean
     public ApplicationListener<ApplicationReadyEvent> appReadyListener(final BuildInfo bi) {
-        return event -> log.info("{} ready for requests.", bi.describe());
+        return event -> log.info("{} ready for requests on port [{}].", bi.describe(), serverPort);
     }
 }
