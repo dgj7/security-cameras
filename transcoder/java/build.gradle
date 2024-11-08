@@ -4,14 +4,24 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.6'
 
 	id "io.freefair.lombok" version "8.10.2"
+	id "com.gorylenko.gradle-git-properties" version "2.4.1"
 }
 
 group = 'com.dg.securitycams.transcoder'
-version = '0.0.3'
+version = '0.0.4'
 
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(20)
+	}
+}
+
+gradle.projectsEvaluated {
+	tasks.withType(JavaCompile).tap {
+		configureEach {
+			options.encoding = "UTF-8"
+			options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+		}
 	}
 }
 
@@ -29,6 +39,9 @@ dependencies {
 
 	implementation "com.github.kokorin.jaffree:jaffree:2023.09.10"
 
+	/* swagger */
+	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0"
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
@@ -39,4 +52,8 @@ tasks.named('test') {
 
 bootRun {
 	args = ["--spring.profiles.active=local,localauth"]
+}
+
+springBoot {
+	buildInfo()
 }
