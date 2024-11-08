@@ -14,6 +14,9 @@ import java.util.Objects;
 
 import static com.dg.securitycams.transcoder.Constants.INFO_LIST_URI;
 
+/**
+ * /api/info/list/cameras
+ */
 @Slf4j
 @RestController
 @RequestMapping(INFO_LIST_URI)

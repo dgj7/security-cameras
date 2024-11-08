@@ -26,4 +26,7 @@
 
     <!-- silence loud apache things -->
     <logger name="org.apache" level="INFO"/>
+
+    <!-- DEBUG: display an informative message for any service that gets called -->
+    <logger name="com.dg.securitycams.transcoder.config.log.CallLogger" level="DEBUG"/>
 </configuration>

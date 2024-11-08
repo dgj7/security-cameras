@@ -1,5 +1,6 @@
 package com.dg.securitycams.transcoder.config;
 
+import com.dg.securitycams.transcoder.config.log.CallLogger;
 import com.dg.securitycams.transcoder.pattern.transform.Transformer;
 import com.dg.securitycams.transcoder.pattern.transform.impl.CameraToUrlTransformer;
 import com.dg.securitycams.transcoder.model.camconfig.Camera;
@@ -7,6 +8,7 @@ import com.dg.securitycams.transcoder.model.camconfig.Cameras;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Resources;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -58,5 +60,10 @@ public class ApplicationConfiguration {
 
         /* done */
         return map;
+    }
+
+    @Bean
+    public CallLogger callLogger() {
+        return new CallLogger(Logger::isDebugEnabled, (logger, format, args) -> logger.debug(format, args));
     }
 }
