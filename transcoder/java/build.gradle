@@ -28,10 +28,6 @@ gradle.projectsEvaluated {
 	}
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
-
 springBoot {
 	buildInfo()
 }
