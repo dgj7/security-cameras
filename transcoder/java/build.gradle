@@ -1,14 +1,13 @@
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.0-M3'
-	id 'io.spring.dependency-management' version '1.1.6'
 
 	id "io.freefair.lombok" version "8.10.2"
 	id "com.gorylenko.gradle-git-properties" version "2.4.1"
 }
 
 group = 'com.dg.securitycams.transcoder'
-version = '0.0.10'
+version = '0.0.11'
 
 apply from: 'gradle/dependencies.gradle'
 apply from: 'gradle/local.gradle'
