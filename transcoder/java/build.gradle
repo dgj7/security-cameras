@@ -8,7 +8,7 @@ plugins {
 }
 
 group = 'com.dg.securitycams.transcoder'
-version = '0.0.9'
+version = '0.0.10'
 
 apply from: 'gradle/dependencies.gradle'
 apply from: 'gradle/local.gradle'
