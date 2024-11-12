@@ -44,6 +44,9 @@ public class FFMpegBasedSolution {
         /* build the url based on the camera configuration */
         final String url = urlGen.transform(camera);
 
+        /* log a message */
+        log.info("launching stream: [{}]...", camera.getId());
+
         /* call ffmpeg to generate stream */
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)

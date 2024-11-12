@@ -36,6 +36,11 @@
     <logger name="org.apache.catalina.core.ContainerBase" level="WARN"/>
     <logger name="org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver" level="WARN"/>
 
+    <!-- silence loud ffmpeg things -->
+    <logger name="com.github.kokorin.jaffree.process.BaseStdReader" level="WARN"/>
+    <logger name="com.github.kokorin.jaffree.process.ProcessHandler" level="WARN"/>
+    <logger name="com.github.kokorin.jaffree.ffmpeg.PipeOutput" level="WARN"/>
+
     <!-- DEBUG: display an informative message for any service that gets called -->
     <logger name="com.dg.securitycams.transcoder.service.any.CallLogger" level="DEBUG"/>
 
