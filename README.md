@@ -9,4 +9,7 @@ There are two components:
   * initially, just an html webpage with a simple video tag
   * eventually, something more serious (nodejs app?)
 
+## Additional Resources
+* [soap](/soap/) - _learning about the SOAP service exposed by ONVIF devices_
+
 ----
